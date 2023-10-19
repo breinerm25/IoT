@@ -62,13 +62,3 @@ message =json.dumps({"Analog": float(values)})
 ret= client1.publish("send_analog", message)
 
 
-if st.button('Enviar valor analógico'):
-
-    
- 
-else:
-    st.write('')
-
-
-
-
