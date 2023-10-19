@@ -55,13 +55,15 @@ else:
 
 values = st.slider('Selecciona el rango de valores',0.0, 100.0)
 st.write('Values:', values)
+client1= paho.Client("linkPrueba")                           
+client1.on_publish = on_publish                          
+client1.connect(broker,port)   
+message =json.dumps({"Analog": float(values)})
+ret= client1.publish("send_analog", message)
+
 
 if st.button('Enviar valor analógico'):
-    client1= paho.Client("linkPrueba")                           
-    client1.on_publish = on_publish                          
-    client1.connect(broker,port)   
-    message =json.dumps({"Analog": float(values)})
-    ret= client1.publish("send_analog", message)
+
     
  
 else:
